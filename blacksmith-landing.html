@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blacksmith — Custom AI for Small Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F3EE;
+    --warm-white: #FDFAF6;
+    --charcoal: #1C1A18;
+    --gold: #B8922A;
+    --gold-light: #D4AC4E;
+    --gold-pale: #F0E4C4;
+    --stone: #8C8278;
+    --stone-light: #C8BFB5;
+    --rust: #8B4A2B;
+    --green: #2D5A3D;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2.5rem;
+    background: rgba(253, 250, 246, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,146,42,0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    padding: 0.55rem 1.2rem;
+    transition: all 0.25s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--warm-white);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(184,146,42,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(184,146,42,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 3rem 5rem 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--charcoal);
+    margin-bottom: 1.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--stone);
+    max-width: 420px;
+    margin-bottom: 2.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid var(--charcoal);
+  }
+
+  .btn-primary:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .btn-secondary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--charcoal); }
+
+  .btn-secondary::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+
+  .btn-secondary:hover::after { transform: translateX(4px); }
+
+  /* hero right: mock device */
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 4rem 4rem 2rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.5s forwards;
+  }
+
+  .device-frame {
+    width: 100%;
+    max-width: 480px;
+    background: var(--charcoal);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+      0 40px 80px rgba(28,26,24,0.18),
+      0 0 0 1px rgba(184,146,42,0.2);
+    position: relative;
+  }
+
+  .device-bar {
+    background: #2A2724;
+    padding: 0.65rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .device-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .device-dot:nth-child(1) { background: #FF5F57; }
+  .device-dot:nth-child(2) { background: #FEBC2E; }
+  .device-dot:nth-child(3) { background: #28C840; }
+
+  .device-url {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  .device-screen {
+    background: #F7F3EE;
+    padding: 1.5rem;
+    min-height: 340px;
+  }
+
+  .screen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--stone-light);
+  }
+
+  .screen-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    letter-spacing: 0.06em;
+  }
+
+  .screen-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--green);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+  }
+
+  .screen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .screen-card {
+    background: white;
+    border-radius: 8px;
+    padding: 0.85rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .screen-card-img {
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(135deg, var(--gold-pale), var(--stone-light));
+    border-radius: 4px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .screen-card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.15rem;
+  }
+
+  .screen-card-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--stone);
+  }
+
+  .screen-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--gold-pale);
+    color: var(--gold);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    margin-top: 0.3rem;
+  }
+
+  .screen-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .screen-stat {
+    background: white;
+    border-radius: 6px;
+    padding: 0.65rem 0.5rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .screen-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    display: block;
+  }
+
+  .screen-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.48rem;
+    color: var(--stone);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* floating tag */
+  .hero-float-tag {
+    position: absolute;
+    bottom: 3rem;
+    left: -1rem;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 0.9rem 1.2rem;
+    border-left: 3px solid var(--gold);
+    max-width: 200px;
+    box-shadow: 0 12px 32px rgba(28,26,24,0.2);
+  }
+
+  .hero-float-tag .tag-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-float-tag .tag-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  /* ── PROOF STRIP ── */
+  .proof-strip {
+    background: var(--charcoal);
+    padding: 1.25rem 5rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    overflow-x: auto;
+  }
+
+  .proof-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .proof-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .proof-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(253,250,246,0.55);
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 5rem; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--stone);
+    max-width: 520px;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2.5rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--stone-light);
+    position: relative;
+    cursor: default;
+    transition: all 0.2s;
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step:hover .step-num { color: var(--gold); }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--stone-light);
+    line-height: 1;
+    min-width: 2rem;
+    transition: color 0.2s;
+  }
+
+  .step-content {}
+
+  .step-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.35rem;
+  }
+
+  .step-desc {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--stone);
+  }
+
+  /* right side visual */
+  .how-visual {
+    position: relative;
+  }
+
+  .ai-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 8px 40px rgba(28,26,24,0.09);
+    border: 1px solid rgba(184,146,42,0.12);
+    margin-bottom: 1rem;
+  }
+
+  .ai-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .ai-icon {
+    width: 36px; height: 36px;
+    background: var(--charcoal);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .ai-card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .ai-card-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+  }
+
+  .ai-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .ai-field {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .ai-field-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 0.2rem;
+  }
+
+  .ai-field-value {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .ai-field-value.auto {
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .ai-field-value.auto::before {
+    content: '✦';
+    font-size: 0.55rem;
+  }
+
+  .ai-confirm-btn {
+    width: 100%;
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+
+  .ai-confirm-btn:hover { opacity: 0.9; }
+
+  .how-float {
+    position: absolute;
+    top: -1.5rem;
+    right: -1.5rem;
+    background: var(--gold);
+    color: var(--charcoal);
+    padding: 0.85rem 1.1rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(184,146,42,0.3);
+  }
+
+  .how-float-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: block;
+    line-height: 1;
+  }
+
+  .how-float-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── WHO THIS IS FOR ── */
+  .who {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .who-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .who-card {
+    border: 1px solid var(--stone-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.25s;
+    cursor: default;
+  }
+
+  .who-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(184,146,42,0.1);
+    transform: translateY(-2px);
+  }
+
+  .who-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+
+  .who-card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.35rem;
+  }
+
+  .who-card-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--stone);
+  }
+
+  .pain-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pain-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background: #FFF8F5;
+    border-left: 3px solid var(--rust);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .pain-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  .pain-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--charcoal);
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--charcoal);
+    color: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about .section-label { color: var(--gold-light); }
+  .about .section-title { color: var(--warm-white); }
+  .about .section-body { color: rgba(253,250,246,0.6); }
+
+  .cred-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cred-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    transition: border-color 0.2s;
+  }
+
+  .cred-item:hover { border-color: rgba(184,146,42,0.4); }
+
+  .cred-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--gold-light);
+    min-width: 80px;
+    text-transform: uppercase;
+  }
+
+  .cred-divider {
+    width: 1px; height: 1.25rem;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .cred-desc {
+    font-size: 0.8rem;
+    color: rgba(253,250,246,0.5);
+    line-height: 1.4;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .story-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,146,42,0.2);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .story-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(253,250,246,0.85);
+    margin-bottom: 1.5rem;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.25rem;
+  }
+
+  .story-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .story-avatar {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .story-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--warm-white);
+  }
+
+  .story-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--stone);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(45,90,61,0.3);
+    border: 1px solid rgba(45,90,61,0.5);
+    color: #5DBF7A;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    margin-top: 1.25rem;
+  }
+
+  .live-pulse {
+    width: 6px; height: 6px;
+    background: #5DBF7A;
+    border-radius: 50%;
+    animation: pulse 1.5s ease infinite;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    text-align: center;
+    padding: 7rem 5rem;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,146,42,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-title em { font-style: italic; color: var(--gold); }
+
+  .cta-sub {
+    font-size: 0.95rem;
+    color: var(--stone);
+    max-width: 420px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 1.1rem 2.5rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid var(--charcoal);
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(184,146,42,0.25);
+  }
+
+  .cta-note {
+    margin-top: 1.25rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--warm-white);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: rgba(253,250,246,0.25);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 5rem 1.75rem 2rem; }
+    .hero-right { padding: 2rem 1.75rem 3rem; }
+    .hero-float-tag { left: 1rem; bottom: 1rem; }
+    .proof-strip { padding: 1.25rem 1.75rem; }
+    section { padding: 4rem 1.75rem; }
+    .how, .who, .about { grid-template-columns: 1fr; gap: 3rem; }
+    .who-cards { grid-template-columns: 1fr 1fr; }
+    .cta-section { padding: 5rem 1.75rem; }
+    footer { padding: 1.5rem 1.75rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+    .how-float { right: 0; top: -1rem; }
+  }
+
+  @media (max-width: 500px) {
+    .who-cards { grid-template-columns: 1fr; }
+    .ai-field-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Black<span>smith</span></a>
+  <a class="nav-cta" href="https://calendly.com/ahad-ali1031/30min">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">AI-Powered for Small Business</p>
+    <h1 class="hero-title">
+      Your store runs on<br><em>trust and time.</em><br>We handle the rest.
+    </h1>
+    <p class="hero-sub">
+      I build custom AI tools for independent business owners, starting with jewelry stores. No complicated software. No monthly SaaS fees for features you do not use. Just a solution built around your exact problem.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://calendly.com/ahad-ali1031/30min">Let's Talk — It's Free</a>
+      <a class="btn-secondary" href="#how">See How It Works</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div style="position:relative; width:100%;">
+      <div class="device-frame">
+        <div class="device-bar">
+          <div class="device-dot"></div>
+          <div class="device-dot"></div>
+          <div class="device-dot"></div>
+          <span class="device-url">yourstore.com/dashboard</span>
+        </div>
+        <div class="device-screen">
+          <div class="screen-header">
+            <span class="screen-logo">Blacksmith</span>
+            <span class="screen-badge">● Live</span>
+          </div>
+          <div class="screen-grid">
+            <div class="screen-card">
+              <div class="screen-card-img">💍</div>
+              <div class="screen-card-title">14K Rose Gold Ring</div>
+              <div class="screen-card-meta">Size 7 · 2.3g</div>
+              <span class="screen-tag">AI Filled</span>
+            </div>
+            <div class="screen-card">
+              <div class="screen-card-img">📿</div>
+              <div class="screen-card-title">Diamond Necklace</div>
+              <div class="screen-card-meta">18K · 0.5ct</div>
+              <span class="screen-tag">AI Filled</span>
+            </div>
+          </div>
+          <div class="screen-stat-row">
+            <div class="screen-stat">
+              <span class="screen-stat-num">247</span>
+              <span class="screen-stat-label">Items Live</span>
+            </div>
+            <div class="screen-stat">
+              <span class="screen-stat-num">~3s</span>
+              <span class="screen-stat-label">Per Item</span>
+            </div>
+            <div class="screen-stat">
+              <span class="screen-stat-num">0</span>
+              <span class="screen-stat-label">Manual Entry</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-float-tag">
+        <p class="tag-label">Currently Live At</p>
+        <p class="tag-value">Divine Diamonds, Orlando FL</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Built by a Georgia Tech CS grad</span></div>
+  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Internships at EA · Amazon · Meta</span></div>
+  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Live system running in Orlando</span></div>
+  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Custom built. Not a SaaS template.</span></div>
+  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Priced for small business budgets</span></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div>
+    <p class="section-label">The Process</p>
+    <h2 class="section-title">Built around your<br><em>actual problem.</em></h2>
+    <p class="section-body">I do not sell a fixed product. I start by understanding what is slowing you down, then build exactly what you need. Nothing more.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-content">
+          <p class="step-title">Discovery Call</p>
+          <p class="step-desc">15 minutes. I ask about your operations, what breaks, what takes too long, and where you lose money to inefficiency.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-content">
+          <p class="step-title">Custom Proposal</p>
+          <p class="step-desc">I map out exactly what I would build, what it costs, and what it will save you. You approve before I write a single line of code.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-content">
+          <p class="step-title">Build and Deliver</p>
+          <p class="step-desc">I build it, walk you through it, and make sure your team can actually use it. Ongoing support available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="how-visual">
+    <div class="how-float">
+      <span class="how-float-num">3s</span>
+      <span class="how-float-label">Per product listed</span>
+    </div>
+    <div class="ai-card">
+      <div class="ai-card-header">
+        <div class="ai-icon">✦</div>
+        <div>
+          <p class="ai-card-title">AI Product Reader</p>
+          <p class="ai-card-sub">Photo taken · Analyzing now</p>
+        </div>
+      </div>
+      <div class="ai-field-row">
+        <div class="ai-field">
+          <p class="ai-field-label">Metal Type</p>
+          <p class="ai-field-value auto">14K Yellow Gold</p>
+        </div>
+        <div class="ai-field">
+          <p class="ai-field-label">Ring Size</p>
+          <p class="ai-field-value auto">7.0</p>
+        </div>
+      </div>
+      <div class="ai-field-row">
+        <div class="ai-field">
+          <p class="ai-field-label">Carat Weight</p>
+          <p class="ai-field-value auto">2.3g</p>
+        </div>
+        <div class="ai-field">
+          <p class="ai-field-label">Category</p>
+          <p class="ai-field-value auto">Engagement Ring</p>
+        </div>
+      </div>
+      <div class="ai-field" style="margin-bottom:0.75rem;">
+        <p class="ai-field-label">Auto-Generated Description</p>
+        <p class="ai-field-value auto">Classic solitaire setting with tapered band...</p>
+      </div>
+      <button class="ai-confirm-btn">✓ Confirm and Publish to Website</button>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">Snap a photo. AI reads it. You confirm. Done.</p>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="who">
+  <div>
+    <p class="section-label">Who This Is For</p>
+    <h2 class="section-title">Independent stores<br>running on <em>grit.</em></h2>
+    <p class="section-body">You built something real. You should not have to spend hours on tasks that software can handle in seconds.</p>
+    <div class="pain-list">
+      <div class="pain-item">
+        <span class="pain-icon">⏱</span>
+        <p class="pain-text">Manually typing inventory into spreadsheets or outdated POS systems every time something new comes in.</p>
+      </div>
+      <div class="pain-item">
+        <span class="pain-icon">🌐</span>
+        <p class="pain-text">No real web presence, or a website that costs $300/month and still does not show your actual inventory.</p>
+      </div>
+      <div class="pain-item">
+        <span class="pain-icon">📊</span>
+        <p class="pain-text">No easy way to track what is selling, what is sitting, or what customers are actually looking at.</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="section-label" style="margin-top:0;">Verticals I Work In</p>
+    <p class="section-body" style="margin-bottom:0;">I focus on family-owned retail with 1-3 locations. If you work with your hands and customers face-to-face, we will likely find something worth building.</p>
+    <div class="who-cards">
+      <div class="who-card">
+        <div class="who-card-icon">💍</div>
+        <p class="who-card-title">Jewelry Stores</p>
+        <p class="who-card-desc">Inventory management, web storefronts, AI product listing. Currently live.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-card-icon">🏪</div>
+        <p class="who-card-title">Convenience Stores</p>
+        <p class="who-card-desc">Vendor tracking, promotions, and operational workflows.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-card-icon">🥃</div>
+        <p class="who-card-title">Liquor Stores</p>
+        <p class="who-card-desc">Inventory alerts, reorder automation, and customer loyalty tools.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-card-icon">🏬</div>
+        <p class="who-card-title">Wholesalers</p>
+        <p class="who-card-desc">Order management, catalog tools, and buyer communication.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div>
+    <p class="section-label">Who I Am</p>
+    <h2 class="section-title">A builder who<br><em>gets it.</em></h2>
+    <p class="section-body">I grew up around a family jewelry store in Orlando. I know what it feels like when tech feels out of reach or too expensive. I am a software engineer who builds real AI solutions, not someone selling you a generic template.</p>
+    <div class="cred-list">
+      <div class="cred-item">
+        <span class="cred-logo">Georgia Tech</span>
+        <div class="cred-divider"></div>
+        <span class="cred-desc">B.S. Computer Science</span>
+      </div>
+      <div class="cred-item">
+        <span class="cred-logo">Meta</span>
+        <div class="cred-divider"></div>
+        <span class="cred-desc">Software Engineer (incoming)</span>
+      </div>
+      <div class="cred-item">
+        <span class="cred-logo">Amazon</span>
+        <div class="cred-divider"></div>
+        <span class="cred-desc">Software Engineering Intern</span>
+      </div>
+      <div class="cred-item">
+        <span class="cred-logo">EA Sports</span>
+        <div class="cred-divider"></div>
+        <span class="cred-desc">Software Engineering Intern</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-visual">
+    <div class="story-card">
+      <p class="story-quote">
+        "My dad has run his jewelry store for years on the same system everyone else uses. It works, but it was costing him hours every week on inventory alone. I built something that cut that down to minutes. Now I want to do the same for every small business owner who deserves better tools."
+      </p>
+      <div class="story-meta">
+        <div class="story-avatar">Y</div>
+        <div>
+          <p class="story-name">Ahad Ali</p>
+          <p class="story-role">Founder · Blacksmith</p>
+        </div>
+      </div>
+      <div class="live-badge">
+        <div class="live-pulse"></div>
+        System live at Divine Diamonds · Orlando, FL
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p class="cta-label">Let's Talk</p>
+  <h2 class="cta-title">Not sure if your problem is solvable? <em>That is exactly the call to book.</em></h2>
+  <p class="cta-sub">15 minutes. No pitch. Just tell me what is slowing you down and I will tell you if I can help.</p>
+  <a class="cta-btn" href="https://calendly.com/ahad-ali1031/30min">Book a Free 15-Min Call</a>
+  <p class="cta-note">No commitment. No sales pressure. Just a conversation.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Black<span>smith</span></span>
+  <span class="foot
