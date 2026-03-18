@@ -572,49 +572,53 @@
   /* ── HOW IT WORKS ── */
   .how {
     background: var(--cream);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
+    text-align: center;
   }
 
   .steps {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
   }
 
   .step {
     display: flex;
-    gap: 1.5rem;
-    padding: 1.75rem 0;
-    border-bottom: 1px solid var(--stone-light);
-    position: relative;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--warm-white);
+    border-radius: 12px;
+    border: 1px solid var(--stone-light);
     cursor: default;
-    transition: all 0.2s;
+    transition: all 0.25s;
   }
 
-  .step:last-child { border-bottom: none; }
+  .step:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(184,146,42,0.1);
+    transform: translateY(-2px);
+  }
 
   .step:hover .step-num { color: var(--gold); }
 
   .step-num {
     font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 400;
     color: var(--stone-light);
     line-height: 1;
-    min-width: 2rem;
+    margin-bottom: 1rem;
     transition: color 0.2s;
   }
 
   .step-title {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
     color: var(--charcoal);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
   }
 
   .step-desc {
@@ -1196,7 +1200,8 @@
     .hero-float-tag { left: 1rem; bottom: 1rem; }
     .proof-strip { padding: 1.25rem 1.75rem; }
     section { padding: 4rem 1.75rem; }
-    .how, .problem, .about, .case-study-content { grid-template-columns: 1fr; gap: 3rem; }
+    .problem, .about, .case-study-content { grid-template-columns: 1fr; gap: 3rem; }
+    .steps { grid-template-columns: 1fr; }
     .testimonial-strip { flex-direction: column; padding: 2rem 1.75rem !important; }
     .who-cards { grid-template-columns: 1fr 1fr; }
     .faq-grid { grid-template-columns: 1fr; }
@@ -1305,41 +1310,25 @@
 
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
-  <div>
-    <p class="section-label">The Process</p>
-    <h2 class="section-title">Built around your<br><em>actual problem.</em></h2>
-    <p class="section-body">I don't sell a one-size-fits-all product. I learn how your business works, find what's slowing you down, and build something to fix it.</p>
-    <div class="steps">
-      <div class="step">
-        <span class="step-num">01</span>
-        <div class="step-content">
-          <p class="step-title">Discovery Call</p>
-          <p class="step-desc">30 minutes. You tell me what's going on in your business. What takes too long, what's frustrating, what you wish worked better.</p>
-        </div>
-      </div>
-      <div class="step">
-        <span class="step-num">02</span>
-        <div class="step-content">
-          <p class="step-title">Custom Proposal</p>
-          <p class="step-desc">I put together a clear plan: what I'll build, what it costs, and how it helps. You say yes before any work starts.</p>
-        </div>
-      </div>
-      <div class="step">
-        <span class="step-num">03</span>
-        <div class="step-content">
-          <p class="step-title">Build and Deliver</p>
-          <p class="step-desc">I build it, show you how it works, and make sure you and your team are comfortable using it. And I'll maintain your software so you never have to worry about it.</p>
-        </div>
-      </div>
+  <p class="section-label">The Process</p>
+  <h2 class="section-title">Built around your <em>actual problem.</em></h2>
+  <p class="section-body" style="max-width:520px;margin:0 auto;">I don't sell a one-size-fits-all product. I learn how your business works, find what's slowing you down, and build something to fix it.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <p class="step-title">Discovery Call</p>
+      <p class="step-desc">30 minutes. You tell me what's going on in your business. What takes too long, what's frustrating, what you wish worked better.</p>
     </div>
-  </div>
-  <div class="how-visual">
-    <div class="demo-video">
-      <video autoplay loop muted playsinline style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(28,26,24,0.12);border:1px solid rgba(184,146,42,0.12);">
-        <source src="assets/demo.mov" type="video/mp4" />
-      </video>
+    <div class="step">
+      <span class="step-num">02</span>
+      <p class="step-title">Custom Proposal</p>
+      <p class="step-desc">I put together a clear plan: what I'll build, what it costs, and how it helps. You say yes before any work starts.</p>
     </div>
-    <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">See how it works: snap, confirm, done</p>
+    <div class="step">
+      <span class="step-num">03</span>
+      <p class="step-title">Build and Deliver</p>
+      <p class="step-desc">I build it, show you how it works, and make sure you and your team are comfortable using it. And I'll maintain your software so you never have to worry about it.</p>
+    </div>
   </div>
 </section>
 
