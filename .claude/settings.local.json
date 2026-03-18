@@ -18,7 +18,10 @@
       "Bash(open:*)",
       "Bash(git:*)",
       "Bash(ls:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(for f:*)",
+      "Bash(do mv:*)",
+      "Bash(done)"
     ]
   }
 }
