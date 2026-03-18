@@ -609,8 +609,6 @@
     transition: color 0.2s;
   }
 
-  .step-content {}
-
   .step-title {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.9rem;
@@ -1232,7 +1230,7 @@
       The tech exists. You just need<br>someone to <em>build it for you.</em>
     </h1>
     <p class="hero-sub">
-      I come from a family business. I've seen the headaches firsthand. Now I build custom software that solves them. Not another costly subscription you'll barely use. Real tools, built around how your business actually works.
+      I come from a family business. I've seen the headaches firsthand. Now I build custom software that solves them. Real tools, built around how your business actually works.
     </p>
     <div class="hero-actions">
       <a class="btn-primary" href="https://calendly.com/ahad-ali1031/30min">Tell Me What's Slowing You Down</a>
@@ -1336,12 +1334,12 @@
     </div>
   </div>
   <div class="how-visual">
-    <div class="how-float">
-      <span class="how-float-num">10+</span>
-      <span class="how-float-label">Hours saved / week</span>
+    <div class="demo-video">
+      <video autoplay loop muted playsinline style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(28,26,24,0.12);border:1px solid rgba(184,146,42,0.12);">
+        <source src="assets/demo.mov" type="video/mp4" />
+      </video>
     </div>
-    <img src="assets/jewelsync.png" alt="JewelSync custom inventory system" style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(28,26,24,0.12);border:1px solid rgba(184,146,42,0.12);" />
-    <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">JewelSync: built custom for Divine Diamonds, Orlando</p>
+    <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">See how it works: snap, confirm, done</p>
   </div>
 </section>
 
@@ -1439,24 +1437,14 @@
     </div>
   </div>
   <div class="about-visual">
-    <div class="story-card">
-      <p class="story-quote">
-        "I've built software at Meta, Amazon, and EA. But the work that matters most to me is this. The technology to fix your problems already exists. Someone just needs to bring it to you. That's what I do."
-      </p>
-      <div class="story-meta">
-        <img class="story-avatar" src="assets/me-bowtie.jpg" alt="Ahad Ali" />
-        <div>
-          <p class="story-name">Ahad Ali</p>
-          <p class="story-role">Founder · Blacksmith Solutions</p>
-        </div>
-      </div>
-    </div>
-    <div class="story-contact" style="margin-top:1.25rem;">
+    <img src="assets/me-bowtie.jpg" alt="Ahad Ali" style="width:100%;max-width:320px;border-radius:12px;box-shadow:0 8px 40px rgba(28,26,24,0.08);" />
+    <div style="margin-top:1.25rem;">
+      <p style="font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;color:var(--charcoal);">Ahad Ali</p>
+      <p style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--stone);letter-spacing:0.06em;margin-bottom:1rem;">Founder · Blacksmith Solutions</p>
       <a class="linkedin-btn" href="https://www.linkedin.com/in/ahad-ali1/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         Connect on LinkedIn
       </a>
-      <p style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--stone);margin-top:0.75rem;">(407) 202-8150 · ahad.ali1031@gmail.com</p>
     </div>
   </div>
 </section>
@@ -1503,7 +1491,8 @@
 <script>
 (function() {
   var btn = document.getElementById('nav-cta-btn');
-  var texts = ["Tell Me What's Slowing You Down", "Book a Free 30-Min Call"];
+  var mobile = window.innerWidth < 600;
+  var texts = mobile ? ["Let's Talk", "Book a Call"] : ["Tell Me What's Slowing You Down", "Book a Free 30-Min Call"];
   var i = 0;
   setInterval(function() {
     btn.style.opacity = '0';
