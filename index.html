@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Blacksmith — Custom AI for Small Business</title>
-<meta name="description" content="Custom AI tools built for independent retail businesses. Inventory management, web storefronts, and automation — built around your exact problem." />
+<meta name="description" content="Custom AI tools built for independent retail businesses. Inventory management, web storefronts, and automation built around your exact problem." />
 <link rel="icon" type="image/png" href="assets/icon-anvil.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -70,12 +70,13 @@
     color: var(--warm-white);
     text-decoration: none;
     padding: 0.65rem 1.4rem;
-    transition: all 0.25s ease;
+    transition: background 0.25s ease, opacity 0.5s ease, transform 0.5s ease;
   }
 
   .nav-cta:hover {
     background: var(--gold);
   }
+
 
   /* ── HERO ── */
   .hero {
@@ -504,6 +505,25 @@
     transform: translateY(-2px);
   }
 
+  .who-card-active {
+    border-color: var(--gold);
+    background: rgba(184,146,42,0.04);
+  }
+
+  .who-card-live {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--green);
+    color: white;
+    padding: 0.12rem 0.4rem;
+    border-radius: 10px;
+    vertical-align: middle;
+    margin-left: 0.35rem;
+  }
+
   .who-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
 
   .who-card-title {
@@ -861,6 +881,125 @@
     animation: pulse 1.5s ease infinite;
   }
 
+  /* ── CASE STUDY ── */
+  .case-study {
+    background: var(--charcoal);
+    color: var(--warm-white);
+  }
+
+  .case-study .section-label { color: var(--gold-light); }
+  .case-study .section-title { color: var(--warm-white); }
+
+  .case-study-header {
+    margin-bottom: 3rem;
+  }
+
+  .case-study-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .case-study-video video {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(184,146,42,0.2);
+  }
+
+  .case-study-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .case-stat {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+
+  .case-stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .case-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(253,250,246,0.45);
+  }
+
+  .case-study-details .section-body {
+    color: rgba(253,250,246,0.6);
+  }
+
+  .case-features {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .case-feature {
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+  }
+
+  .case-feature-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .case-feature-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--warm-white);
+    margin-bottom: 0.2rem;
+  }
+
+  .case-feature-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: rgba(253,250,246,0.5);
+  }
+
+  .case-testimonial {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    border-left: 2px solid var(--gold);
+    background: rgba(255,255,255,0.03);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .case-testimonial-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(253,250,246,0.8);
+    margin-bottom: 0.75rem;
+  }
+
+  .case-testimonial-author {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
   /* ── FAQ ── */
   .faq {
     background: var(--cream);
@@ -1025,7 +1164,7 @@
     .hero-float-tag { left: 1rem; bottom: 1rem; }
     .proof-strip { padding: 1.25rem 1.75rem; }
     section { padding: 4rem 1.75rem; }
-    .how, .problem, .about { grid-template-columns: 1fr; gap: 3rem; }
+    .how, .problem, .about, .case-study-content { grid-template-columns: 1fr; gap: 3rem; }
     .who-cards { grid-template-columns: 1fr 1fr; }
     .faq-grid { grid-template-columns: 1fr; }
     .cta-section { padding: 5rem 1.75rem; }
@@ -1044,21 +1183,21 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#"><img src="assets/logo-wordmark.png" alt="Blacksmith" /></a>
-  <a class="nav-cta" href="https://calendly.com/ahad-ali1031/30min">Book a Free 30-Min Call</a>
+  <a class="nav-cta" href="https://calendly.com/ahad-ali1031/30min" id="nav-cta-btn">Tell Me What's Slowing You Down</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Custom AI for Small Business</p>
+    <p class="hero-eyebrow">I grew up in a family store. Now I build for yours.</p>
     <h1 class="hero-title">
-      Stop losing hours to work<br>a computer <em>should handle.</em>
+      Your business runs on<br>hard work. Let AI handle <em>the rest.</em>
     </h1>
     <p class="hero-sub">
-      I build custom AI tools for independent retail owners. No generic SaaS. No features you will never use. Just software built around your exact problem, by someone who grew up in a family store.
+      I build custom software for small businesses. Not another SaaS with features you'll never touch. Real tools, built around the specific problems you're dealing with right now.
     </p>
     <div class="hero-actions">
-      <a class="btn-primary" href="https://calendly.com/ahad-ali1031/30min">Book a Free 30-Min Call</a>
+      <a class="btn-primary" href="https://calendly.com/ahad-ali1031/30min">Tell Me What's Slowing You Down</a>
       <a class="btn-secondary" href="#how">See How It Works</a>
     </div>
   </div>
@@ -1069,7 +1208,7 @@
           <div class="device-dot"></div>
           <div class="device-dot"></div>
           <div class="device-dot"></div>
-          <span class="device-url">jewelsync.app/inventory</span>
+          <span class="device-url">blacksmith.app/inventory</span>
         </div>
         <div class="device-screen" style="padding:0;min-height:auto;">
           <img src="assets/jewelsync.png" alt="JewelSync inventory management" style="width:100%;display:block;" />
@@ -1087,8 +1226,8 @@
 <div class="proof-strip">
   <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Georgia Tech CS Grad</span></div>
   <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Engineer at Meta · Amazon · EA</span></div>
-  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Live system running in Orlando</span></div>
-  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Custom built — not a template</span></div>
+  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Saving Divine Diamonds 10+ hrs/week</span></div>
+  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Custom built, not a template</span></div>
   <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Priced for small business</span></div>
 </div>
 
@@ -1096,46 +1235,34 @@
 <section class="problem">
   <div>
     <p class="section-label">The Problem</p>
-    <h2 class="section-title">You run a real business.<br>Your tools <em>don't.</em></h2>
-    <p class="section-body">You built something that matters. But every week, hours disappear into work that software should handle — if anyone had bothered to build it for businesses like yours.</p>
-    <div class="pain-list">
-      <div class="pain-item">
-        <span class="pain-icon">⏱</span>
-        <p class="pain-text">Manually typing inventory into spreadsheets or outdated POS systems every time something new comes in.</p>
-      </div>
-      <div class="pain-item">
-        <span class="pain-icon">🌐</span>
-        <p class="pain-text">No real web presence — or a website that costs $300/month and still does not show your actual inventory.</p>
-      </div>
-      <div class="pain-item">
-        <span class="pain-icon">📊</span>
-        <p class="pain-text">No easy way to track what is selling, what is sitting, or what customers are actually looking for.</p>
-      </div>
-    </div>
+    <h2 class="section-title">Everyone talks about AI.<br>Nobody shows you <em>how.</em></h2>
+    <p class="section-body">You keep hearing that AI is changing everything. That you need to adapt or get left behind. But nobody's showing you what that actually looks like for your business.</p>
+    <p class="section-body" style="margin-top:1rem;">The tools out there are built for big companies with IT departments. The pricing is designed for corporations, not family businesses. It's overwhelming, so nothing changes. And the gap keeps growing.</p>
+    <p class="section-body" style="margin-top:1rem;"><strong>I bridge that gap.</strong> I sit down with you, figure out what's costing you time, and build the thing that fixes it. That's it.</p>
   </div>
   <div>
-    <p class="section-label">Who This Is For</p>
-    <p class="section-body" style="margin-bottom:0;">Family-owned retail with 1–3 locations. If you work with your hands and customers face-to-face, we will find something worth building.</p>
+    <p class="section-label">What I Can Build</p>
+    <p class="section-body" style="margin-bottom:0;">If something in your business is repetitive, slow, or annoying, there's probably a way to fix it. Here's what that looks like.</p>
     <div class="who-cards">
       <div class="who-card">
-        <div class="who-card-icon">💍</div>
-        <p class="who-card-title">Jewelry Stores</p>
-        <p class="who-card-desc">AI inventory, web storefronts, automated product listing. Currently live.</p>
+        <div class="who-card-icon">📦</div>
+        <p class="who-card-title">Inventory automation</p>
+        <p class="who-card-desc">Snap a photo, AI fills in the details, product goes live. No more typing things into spreadsheets.</p>
       </div>
       <div class="who-card">
-        <div class="who-card-icon">🏪</div>
-        <p class="who-card-title">Convenience Stores</p>
-        <p class="who-card-desc">Vendor tracking, promotions, and operational workflows.</p>
+        <div class="who-card-icon">🌐</div>
+        <p class="who-card-title">Custom websites</p>
+        <p class="who-card-desc">A site that shows your real inventory, updates automatically, and doesn't cost more than it should.</p>
       </div>
       <div class="who-card">
-        <div class="who-card-icon">🥃</div>
-        <p class="who-card-title">Liquor Stores</p>
-        <p class="who-card-desc">Inventory alerts, reorder automation, and loyalty tools.</p>
+        <div class="who-card-icon">📊</div>
+        <p class="who-card-title">Business dashboards</p>
+        <p class="who-card-desc">What's selling, what's sitting, where your time goes. Numbers that actually help you make decisions.</p>
       </div>
       <div class="who-card">
-        <div class="who-card-icon">🏬</div>
-        <p class="who-card-title">Wholesalers</p>
-        <p class="who-card-desc">Order management, catalog tools, and buyer communication.</p>
+        <div class="who-card-icon">⚡</div>
+        <p class="who-card-title">Workflow automation</p>
+        <p class="who-card-desc">Reorder alerts, customer follow-ups, vendor management. The repetitive work that takes up your week so you can focus on your customers.</p>
       </div>
     </div>
   </div>
@@ -1146,57 +1273,114 @@
   <div>
     <p class="section-label">The Process</p>
     <h2 class="section-title">Built around your<br><em>actual problem.</em></h2>
-    <p class="section-body">I do not sell a fixed product. I start by understanding what slows you down, then build exactly what you need.</p>
+    <p class="section-body">I don't sell a one-size-fits-all product. I learn how your business works, find what's slowing you down, and build something to fix it.</p>
     <div class="steps">
       <div class="step">
         <span class="step-num">01</span>
         <div class="step-content">
           <p class="step-title">Discovery Call</p>
-          <p class="step-desc">30 minutes. I learn about your operations — what breaks, what takes too long, and where you lose money to inefficiency.</p>
+          <p class="step-desc">30 minutes. You tell me what's going on in your business. What takes too long, what's frustrating, what you wish worked better.</p>
         </div>
       </div>
       <div class="step">
         <span class="step-num">02</span>
         <div class="step-content">
           <p class="step-title">Custom Proposal</p>
-          <p class="step-desc">I map out exactly what I will build, what it costs, and what it will save you. You approve before I write a single line of code.</p>
+          <p class="step-desc">I put together a clear plan: what I'll build, what it costs, and how it helps. You say yes before any work starts.</p>
         </div>
       </div>
       <div class="step">
         <span class="step-num">03</span>
         <div class="step-content">
           <p class="step-title">Build and Deliver</p>
-          <p class="step-desc">I build it, walk you through it, and make sure your team can actually use it. Ongoing support included.</p>
+          <p class="step-desc">I build it, show you how it works, and make sure you and your team are comfortable using it. And I'll maintain your software so you never have to worry about it.</p>
         </div>
       </div>
     </div>
   </div>
   <div class="how-visual">
     <div class="how-float">
-      <span class="how-float-num">3s</span>
-      <span class="how-float-label">Per product listed</span>
+      <span class="how-float-num">10+</span>
+      <span class="how-float-label">Hours saved / week</span>
     </div>
-    <div class="demo-video">
-      <video autoplay loop muted playsinline style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(28,26,24,0.12);border:1px solid rgba(184,146,42,0.12);">
-        <source src="assets/demo.mov" type="video/mp4" />
-      </video>
-    </div>
-    <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">JewelSync live demo — AI-powered inventory in action</p>
+    <img src="assets/jewelsync.png" alt="JewelSync custom inventory system" style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(28,26,24,0.12);border:1px solid rgba(184,146,42,0.12);" />
+    <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">JewelSync: built custom for Divine Diamonds, Orlando</p>
   </div>
 </section>
 
-<!-- MID CTA -->
-<div style="text-align:center; padding:3.5rem 2rem; background:var(--warm-white);">
-  <a class="btn-primary" href="https://calendly.com/ahad-ali1031/30min" style="display:inline-block;">Book a Free 30-Min Call</a>
-  <p class="cta-note">No commitment. Just tell me what is slowing you down.</p>
-</div>
+<!-- CASE STUDY -->
+<section class="case-study">
+  <div class="case-study-header">
+    <p class="section-label">Case Study: Divine Diamonds</p>
+    <h2 class="section-title">From hours of manual entry<br>to <em>seconds.</em></h2>
+  </div>
+  <div class="case-study-content">
+    <div class="case-study-video">
+      <video autoplay loop muted playsinline>
+        <source src="assets/demo.mov" type="video/mp4" />
+      </video>
+      <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">Live demo: AI-powered product listing</p>
+    </div>
+    <div class="case-study-details">
+      <div class="case-study-stats">
+        <div class="case-stat">
+          <span class="case-stat-num">10+</span>
+          <span class="case-stat-label">Hours saved per week</span>
+        </div>
+        <div class="case-stat">
+          <span class="case-stat-num">~3s</span>
+          <span class="case-stat-label">Per product listed</span>
+        </div>
+        <div class="case-stat">
+          <span class="case-stat-num">0</span>
+          <span class="case-stat-label">Manual data entry</span>
+        </div>
+      </div>
+      <p class="section-body" style="margin-top:1.5rem;">My dad's jewelry store had a POS system that needed a special camera plugged into one specific computer just to upload photos. Changing a category name meant hours on the phone with support and a 3 business day wait. So I built JewelSync to fix all of that.</p>
+      <div class="case-features">
+        <div class="case-feature">
+          <span class="case-feature-icon">📱</span>
+          <div>
+            <p class="case-feature-title">Mobile photo capture</p>
+            <p class="case-feature-desc">Anyone on the team can take a photo from their phone and add a product. No special equipment, no desktop needed.</p>
+          </div>
+        </div>
+        <div class="case-feature">
+          <span class="case-feature-icon">✦</span>
+          <div>
+            <p class="case-feature-title">AI auto-categorization</p>
+            <p class="case-feature-desc">The system looks at the photo and what you already know about the product, then fills in the rest. Metal type, size, description, category. You just confirm.</p>
+          </div>
+        </div>
+        <div class="case-feature">
+          <span class="case-feature-icon">🌐</span>
+          <div>
+            <p class="case-feature-title">Website integration</p>
+            <p class="case-feature-desc">Once you confirm a product, it goes straight to the website. No copy-pasting, no extra steps.</p>
+          </div>
+        </div>
+        <div class="case-feature">
+          <span class="case-feature-icon">🔮</span>
+          <div>
+            <p class="case-feature-title">Coming soon: AI marketing</p>
+            <p class="case-feature-desc">Using what we know about your inventory and your customers to send the right message at the right time. Currently in development.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-testimonial">
+        <p class="case-testimonial-text">"We used to spend an entire day just updating our inventory. Now it takes minutes. Ahad understood our business from day one because he grew up in it."</p>
+        <p class="case-testimonial-author">— Divine Diamonds, Orlando FL</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section class="about">
   <div>
     <p class="section-label">Who I Am</p>
     <h2 class="section-title">A builder who<br><em>gets it.</em></h2>
-    <p class="section-body">I grew up around a family jewelry store in Orlando. I know what it feels like when tech feels out of reach or too expensive. I build real AI solutions — not generic templates.</p>
+    <p class="section-body">I grew up working in my dad's jewelry store in Orlando. I've seen firsthand how frustrating it is when the technology you depend on doesn't work the way it should. That's why I build what I build.</p>
     <div class="cred-list">
       <div class="cred-item">
         <span class="cred-logo"><img src="assets/gt.png" alt="Georgia Tech" style="width:36px;height:36px;" /></span>
@@ -1223,7 +1407,7 @@
   <div class="about-visual">
     <div class="story-card">
       <p class="story-quote">
-        "My dad has run his jewelry store for years on the same system everyone else uses. It works, but it was costing him hours every week on inventory alone. I built something that cut that down to minutes. Now I want to do the same for every small business owner who deserves better tools."
+        "I've built software at Meta, Amazon, and EA. But the work that matters most to me is this. My freshman year I was working at my dad's jewelry store and saw what he was dealing with. A special camera on one computer just to take product photos. Three business days to change a category name. The technology to fix that exists. Someone just needs to bring it to you. That's what I do."
       </p>
       <div class="story-meta">
         <img class="story-avatar" src="assets/me.jpg" alt="Ahad Ali" />
@@ -1251,19 +1435,19 @@
   <div class="faq-grid">
     <div class="faq-item">
       <p class="faq-question">How much does this cost?</p>
-      <p class="faq-answer">Every project is different. I will give you a fixed price before writing any code. No hourly billing, no surprises. Built for small business budgets.</p>
+      <p class="faq-answer">Every project is different. I'll give you a clear, fixed price before any work starts. No hourly billing, no surprises. I price things for real businesses, not corporations.</p>
     </div>
     <div class="faq-item">
       <p class="faq-question">How long does it take?</p>
-      <p class="faq-answer">Most projects go from first call to live system in 2–4 weeks. You will have a working prototype before full delivery.</p>
+      <p class="faq-answer">Most projects go from first call to something you can use in 2 to 4 weeks. You'll see a working version before the final delivery.</p>
     </div>
     <div class="faq-item">
-      <p class="faq-question">What if it does not work for my store?</p>
-      <p class="faq-answer">That is what the discovery call is for. If I cannot solve your problem, I will tell you — and I will not charge you for the conversation.</p>
+      <p class="faq-question">What if it doesn't work for my store?</p>
+      <p class="faq-answer">Everything I build is custom to your business. It's not a product I'm selling to hundreds of people. I build it for you, around how you work. That's the whole point.</p>
     </div>
     <div class="faq-item">
       <p class="faq-question">Do I need to be technical?</p>
-      <p class="faq-answer">Not at all. I build tools that your team can use the same day. If you can take a photo and tap a button, you can use what I build.</p>
+      <p class="faq-answer">Not at all. Part of what I do is help you understand what's possible with AI and how it can work for your business. I'll build everything to your comfort level and make sure you feel confident using it.</p>
     </div>
   </div>
 </section>
@@ -1271,8 +1455,8 @@
 <!-- FINAL CTA -->
 <section class="cta-section">
   <p class="cta-label">Let's Talk</p>
-  <h2 class="cta-title">Not sure if your problem is solvable? <em>That is exactly the call to book.</em></h2>
-  <p class="cta-sub">30 minutes. No pitch. Just tell me what is slowing you down and I will tell you if I can help.</p>
+  <h2 class="cta-title">Not sure where to start? <em>That's exactly the call to book.</em></h2>
+  <p class="cta-sub">30 minutes. No pitch. Just tell me what's going on in your business. I'm here to listen.</p>
   <a class="cta-btn" href="https://calendly.com/ahad-ali1031/30min">Book a Free 30-Min Call</a>
   <p class="cta-note">No commitment. No sales pressure. Just a conversation.</p>
 </section>
@@ -1283,5 +1467,25 @@
   <span class="footer-copy">© 2026 Blacksmith. Custom AI for small business.</span>
 </footer>
 
+<script>
+(function() {
+  var btn = document.getElementById('nav-cta-btn');
+  var texts = ["Tell Me What's Slowing You Down", "Book a Free 30-Min Call"];
+  var i = 0;
+  setInterval(function() {
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateY(-6px)';
+    setTimeout(function() {
+      i = (i + 1) % texts.length;
+      btn.textContent = texts[i];
+      btn.style.transform = 'translateY(6px)';
+      setTimeout(function() {
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateY(0)';
+      }, 80);
+    }, 500);
+  }, 4000);
+})();
+</script>
 </body>
 </html>
