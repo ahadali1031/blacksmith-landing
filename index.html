@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Blacksmith — Custom AI for Small Business</title>
 <meta name="description" content="Custom AI tools built for independent retail businesses. Inventory management, web storefronts, and automation — built around your exact problem." />
+<link rel="icon" type="image/png" href="assets/icon-anvil.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -49,15 +50,15 @@
   }
 
   .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: var(--charcoal);
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
 
-  .nav-logo span { color: var(--gold); }
+  .nav-logo img {
+    height: 28px;
+    width: auto;
+  }
 
   .nav-cta {
     font-family: 'DM Mono', monospace;
@@ -983,14 +984,15 @@
   }
 
   .footer-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--warm-white);
-    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
   }
 
-  .footer-logo span { color: var(--gold); }
+  .footer-logo img {
+    height: 22px;
+    width: auto;
+    filter: brightness(1.5);
+  }
 
   .footer-copy {
     font-family: 'DM Mono', monospace;
@@ -1042,7 +1044,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">Black<span>smith</span></a>
+  <a class="nav-logo" href="#"><img src="assets/logo-wordmark.png" alt="Blacksmith" /></a>
   <a class="nav-cta" href="https://calendly.com/ahad-ali1031/30min">Book a Free 30-Min Call</a>
 </nav>
 
@@ -1258,22 +1260,22 @@
     <p class="section-body">I grew up around a family jewelry store in Orlando. I know what it feels like when tech feels out of reach or too expensive. I build real AI solutions — not generic templates.</p>
     <div class="cred-list">
       <div class="cred-item">
-        <span class="cred-logo"><img src="gt.png" alt="Georgia Tech" style="width:36px;height:36px;" /></span>
+        <span class="cred-logo"><img src="assets/gt.png" alt="Georgia Tech" style="width:36px;height:36px;" /></span>
         <div class="cred-divider"></div>
         <span class="cred-desc">B.S. Computer Science</span>
       </div>
       <div class="cred-item">
-        <span class="cred-logo"><img src="meta.png" alt="Meta" /></span>
+        <span class="cred-logo"><img src="assets/meta.png" alt="Meta" /></span>
         <div class="cred-divider"></div>
         <span class="cred-desc">Software Engineer</span>
       </div>
       <div class="cred-item">
-        <span class="cred-logo"><img src="amazon.jpg" alt="Amazon" style="width:38px;height:38px;" /></span>
+        <span class="cred-logo"><img src="assets/amazon.jpg" alt="Amazon" style="width:38px;height:38px;" /></span>
         <div class="cred-divider"></div>
         <span class="cred-desc">Software Engineer</span>
       </div>
       <div class="cred-item">
-        <span class="cred-logo"><img src="ea.png" alt="EA Sports" /></span>
+        <span class="cred-logo"><img src="assets/ea.png" alt="EA Sports" /></span>
         <div class="cred-divider"></div>
         <span class="cred-desc">Software Engineer</span>
       </div>
@@ -1285,7 +1287,7 @@
         "My dad has run his jewelry store for years on the same system everyone else uses. It works, but it was costing him hours every week on inventory alone. I built something that cut that down to minutes. Now I want to do the same for every small business owner who deserves better tools."
       </p>
       <div class="story-meta">
-        <img class="story-avatar" src="me.jpg" alt="Ahad Ali" />
+        <img class="story-avatar" src="assets/me.jpg" alt="Ahad Ali" />
         <div>
           <p class="story-name">Ahad Ali</p>
           <p class="story-role">Founder · Blacksmith</p>
@@ -1338,7 +1340,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-logo">Black<span>smith</span></span>
+  <span class="footer-logo"><img src="assets/logo-wordmark.png" alt="Blacksmith" /></span>
   <span class="footer-copy">© 2026 Blacksmith. Custom AI for small business.</span>
 </footer>
 

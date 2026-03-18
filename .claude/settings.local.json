@@ -4,7 +4,21 @@
       "Bash(gh auth:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(vercel:*)",
+      "WebSearch",
+      "WebFetch(domain:uwindi.com)",
+      "WebFetch(domain:growthfueling.com)",
+      "WebFetch(domain:www.melisaliberman.com)",
+      "WebFetch(domain:www.moburst.com)",
+      "WebFetch(domain:thrivethemes.com)",
+      "WebFetch(domain:www.landingpageflow.com)",
+      "Bash(python3 -c \"from PIL import Image; print\\(''pillow available''\\)\")",
+      "Bash(open:*)",
+      "Bash(git:*)",
+      "Bash(ls:*)",
+      "Bash(python3:*)"
     ]
   }
 }
