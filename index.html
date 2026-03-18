@@ -107,6 +107,35 @@
     z-index: 1;
   }
 
+  .hero-intro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+
+  .hero-photo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    flex-shrink: 0;
+  }
+
+  .hero-intro-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--stone);
+  }
+
+  .hero-intro-text strong {
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
     font-size: 0.68rem;
@@ -727,17 +756,17 @@
 
   /* ── ABOUT ── */
   .about {
-    background: var(--charcoal);
-    color: var(--warm-white);
+    background: var(--cream);
+    color: var(--charcoal);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
     align-items: center;
   }
 
-  .about .section-label { color: var(--gold-light); }
-  .about .section-title { color: var(--warm-white); }
-  .about .section-body { color: rgba(253,250,246,0.6); }
+  .about .section-label { color: var(--gold); }
+  .about .section-title { color: var(--charcoal); }
+  .about .section-body { color: var(--stone); }
 
   .cred-list {
     margin-top: 2.5rem;
@@ -751,12 +780,13 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid var(--stone-light);
     border-radius: 6px;
+    background: var(--warm-white);
     transition: border-color 0.2s;
   }
 
-  .cred-item:hover { border-color: rgba(184,146,42,0.4); }
+  .cred-item:hover { border-color: var(--gold); }
 
   .cred-logo {
     width: 44px;
@@ -778,12 +808,12 @@
 
   .cred-divider {
     width: 1px; height: 1.25rem;
-    background: rgba(255,255,255,0.1);
+    background: var(--stone-light);
   }
 
   .cred-desc {
     font-size: 0.8rem;
-    color: rgba(253,250,246,0.5);
+    color: var(--stone);
     line-height: 1.4;
   }
 
@@ -812,10 +842,11 @@
   }
 
   .story-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(184,146,42,0.2);
+    background: var(--warm-white);
+    border: 1px solid var(--stone-light);
     border-radius: 12px;
     padding: 2rem;
+    box-shadow: 0 4px 20px rgba(28,26,24,0.06);
   }
 
   .story-quote {
@@ -824,7 +855,7 @@
     font-style: italic;
     font-weight: 400;
     line-height: 1.6;
-    color: rgba(253,250,246,0.85);
+    color: var(--charcoal);
     margin-bottom: 1.5rem;
     border-left: 2px solid var(--gold);
     padding-left: 1.25rem;
@@ -847,7 +878,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--warm-white);
+    color: var(--charcoal);
   }
 
   .story-role {
@@ -862,9 +893,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(45,90,61,0.3);
-    border: 1px solid rgba(45,90,61,0.5);
-    color: #5DBF7A;
+    background: rgba(45,90,61,0.1);
+    border: 1px solid rgba(45,90,61,0.3);
+    color: var(--green);
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
     letter-spacing: 0.1em;
@@ -1189,6 +1220,10 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
+    <div class="hero-intro">
+      <img class="hero-photo" src="assets/me.jpg" alt="Ahad Ali" />
+      <p class="hero-intro-text"><strong>Ahad Ali</strong> · Georgia Tech CS · Software Engineer at Meta</p>
+    </div>
     <h1 class="hero-title">
       The tech exists. You just need<br>someone to <em>build it for you.</em>
     </h1>
@@ -1221,14 +1256,6 @@
   </div>
 </section>
 
-<!-- PROOF STRIP -->
-<div class="proof-strip">
-  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Georgia Tech CS Grad</span></div>
-  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Engineer at Meta · Amazon · EA</span></div>
-  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Saving Divine Diamonds 10+ hrs/week</span></div>
-  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Custom built, not a template</span></div>
-  <div class="proof-item"><div class="proof-dot"></div><span class="proof-text">Priced for small business</span></div>
-</div>
 
 <!-- PROBLEM -->
 <section class="problem">
@@ -1245,23 +1272,23 @@
     <div class="who-cards">
       <div class="who-card">
         <div class="who-card-icon">📦</div>
-        <p class="who-card-title">Inventory automation</p>
-        <p class="who-card-desc">Snap a photo, AI fills in the details, product goes live. No more typing things into spreadsheets.</p>
+        <p class="who-card-title">Stop typing products into spreadsheets</p>
+        <p class="who-card-desc">Snap a photo, AI fills in the details, product goes live. What used to take hours now takes seconds.</p>
       </div>
       <div class="who-card">
         <div class="who-card-icon">🌐</div>
-        <p class="who-card-title">Custom websites</p>
+        <p class="who-card-title">Get a website that actually works for you</p>
         <p class="who-card-desc">A site that shows your real inventory, updates automatically, and doesn't cost more than it should.</p>
       </div>
       <div class="who-card">
         <div class="who-card-icon">📊</div>
-        <p class="who-card-title">Business dashboards</p>
-        <p class="who-card-desc">What's selling, what's sitting, where your time goes. Numbers that actually help you make decisions.</p>
+        <p class="who-card-title">Know what's selling and what's sitting</p>
+        <p class="who-card-desc">Clear numbers on your business. What's moving, what's not, and where your time is going. No spreadsheets required.</p>
       </div>
       <div class="who-card">
         <div class="who-card-icon">⚡</div>
-        <p class="who-card-title">Workflow automation</p>
-        <p class="who-card-desc">Reorder alerts, customer follow-ups, vendor management. The repetitive work that takes up your week so you can focus on your customers.</p>
+        <p class="who-card-title">Stop doing the same tasks every week</p>
+        <p class="who-card-desc">Reorder alerts, customer follow-ups, vendor management. Let software handle the repetitive stuff so you can focus on your customers.</p>
       </div>
     </div>
   </div>
@@ -1321,6 +1348,10 @@
       <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">Live demo: AI-powered product listing</p>
     </div>
     <div class="case-study-details">
+      <div class="case-testimonial" style="margin-top:0;margin-bottom:1.5rem;">
+        <p class="case-testimonial-text">"We used to spend an entire day just updating our inventory. Now it takes minutes. Ahad understood our business from day one because he grew up in it."</p>
+        <p class="case-testimonial-author">— Divine Diamonds, Orlando FL</p>
+      </div>
       <div class="case-study-stats">
         <div class="case-stat">
           <span class="case-stat-num">10+</span>
@@ -1366,10 +1397,6 @@
           </div>
         </div>
       </div>
-      <div class="case-testimonial">
-        <p class="case-testimonial-text">"We used to spend an entire day just updating our inventory. Now it takes minutes. Ahad understood our business from day one because he grew up in it."</p>
-        <p class="case-testimonial-author">— Divine Diamonds, Orlando FL</p>
-      </div>
     </div>
   </div>
 </section>
@@ -1409,7 +1436,7 @@
         "I've built software at Meta, Amazon, and EA. But the work that matters most to me is this. My freshman year I was working at my dad's jewelry store and saw what he was dealing with. A special camera on one computer just to take product photos. Three business days to change a category name. The technology to fix that exists. Someone just needs to bring it to you. That's what I do."
       </p>
       <div class="story-meta">
-        <img class="story-avatar" src="assets/me.jpg" alt="Ahad Ali" />
+        <img class="story-avatar" src="assets/me-bowtie.jpg" alt="Ahad Ali" />
         <div>
           <p class="story-name">Ahad Ali</p>
           <p class="story-role">Founder · Blacksmith</p>
@@ -1419,10 +1446,13 @@
         <div class="live-pulse"></div>
         System live at Divine Diamonds · Orlando, FL
       </div>
-      <a class="linkedin-btn" href="https://www.linkedin.com/in/ahad-ali1/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        Connect with me on LinkedIn
-      </a>
+      <div class="story-contact">
+        <a class="linkedin-btn" href="https://www.linkedin.com/in/ahad-ali1/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Connect on LinkedIn
+        </a>
+        <p style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--stone);margin-top:0.75rem;">(407) 202-8150 · ahad.ali1031@gmail.com</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1463,7 +1493,7 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo"><img src="assets/logo-solutions-white.png" alt="Blacksmith Solutions" /></span>
-  <span class="footer-copy">© 2026 Blacksmith Solutions.</span>
+  <span class="footer-copy">(407) 202-8150 · ahad.ali1031@gmail.com · © 2026 Blacksmith Solutions.</span>
 </footer>
 
 <script>
