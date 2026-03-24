@@ -21,7 +21,13 @@
       "Bash(python3:*)",
       "Bash(for f:*)",
       "Bash(do mv:*)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.abanalyticsgroup.com/\" -o /tmp/abanalytics_full.html)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.abanalyticsgroup.com/\" -D /tmp/abanalytics_headers.txt -o /dev/null)",
+      "WebFetch(domain:www.abanalyticsgroup.com)",
+      "Bash(grep -oP '\\(?:background-color|background|color|fill\\):\\\\s*\\(?:#[a-fA-F0-9]{3,8}|rgb[a]?\\\\\\([^\\)]+\\\\\\)\\)' /tmp/abanalytics_full.html)",
+      "Bash(grep -oiE '\\(background-color|background|color\\):\\\\s*#[a-fA-F0-9]{3,8}' /tmp/abanalytics_full.html)"
     ]
   }
 }
