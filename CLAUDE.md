@@ -12,12 +12,12 @@ This is a **single-file static site** — everything lives in `index.html`:
 - All CSS is inline in a `<style>` block (no external stylesheets beyond Google Fonts)
 - No JavaScript
 - No build step, bundler, or framework
-- Deployed to Vercel as a static site (auto-deploys from GitHub on push to `main`)
+- Deployed to GitHub Pages (auto-deploys from GitHub on push to `main`)
 
 ## Deployment
 
-- **Hosting**: Vercel (linked to GitHub repo `ahadali1031/blacksmith-landing`)
-- **URL**: https://blacksmith-landing.vercel.app
+- **Hosting**: GitHub Pages (from repo `ahadali1031/blacksmith-landing`, branch `main`)
+- **URL**: https://ahadali1031.github.io/blacksmith-landing/
 - Push to `main` triggers automatic deployment — no build command needed
 
 ## Design System
