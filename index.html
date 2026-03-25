@@ -954,6 +954,15 @@
     border: 1px solid rgba(184,146,42,0.2);
   }
 
+  .case-study-video video::-webkit-media-controls-panel {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .case-study-video video:hover::-webkit-media-controls-panel {
+    opacity: 1;
+  }
+
   .case-study-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1366,7 +1375,7 @@
   </div>
   <div class="case-study-content">
     <div class="case-study-video">
-      <video autoplay loop muted playsinline>
+      <video autoplay loop muted playsinline controls>
         <source src="assets/demo.mov" type="video/mp4" />
       </video>
       <p style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-top:0.75rem;">Live demo: AI-powered product listing, image enhancement, and inventory management</p>
